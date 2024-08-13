@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Showings Made Easy | Showing Sort</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+
+        .navbar {
+            background-color: #007bff;
+        }
+
+        .navbar-brand {
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .hero-section {
+            background: url('https://source.unsplash.com/1600x900/?real-estate') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: #007bff;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+        }
+
+        .hero-section .btn-primary {
+            padding: 15px 30px;
+            font-size: 1.25rem;
+            border-radius: 30px;
+        }
+
+        .features-section {
+            padding: 60px 0;
+        }
+
+        .features-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 700;
+            color: #007bff;
+        }
+
+        .feature-box {
+            text-align: center;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+
+        .feature-box i {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .how-it-works-section {
+            padding: 60px 0;
+            background-color: #f1f1f1;
+        }
+
+        .how-it-works-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 700;
+            color: #007bff;
+        }
+
+        .step-box {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .step-box i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .testimonials-section {
+            padding: 60px 0;
+        }
+
+        .testimonials-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 700;
+            color: #007bff;
+        }
+
+        .testimonial {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .testimonial h5 {
+            font-weight: 700;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Showing Sort</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Streamline Your Showings with Ease</h1>
+            <p>Let us handle the planning, so you can focus on closing deals.</p>
+            <a href="#" class="btn btn-primary">Get Started Today</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2>Key Features</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="feature-box">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h4>Effortless Scheduling</h4>
+                        <p>Automatically organize showings based on optimal routes.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feature-box">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h4>Smart Route Planning</h4>
+                        <p>Save time by finding the quickest routes between properties.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feature-box">
+                        <i class="fas fa-users"></i>
+                        <h4>Client Collaboration</h4>
+                        <p>Easily collaborate and share schedules with clients.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feature-box">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h4>Mobile-Friendly</h4>
+                        <p>Manage your showings on the go with our responsive app.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works-section">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="step-box">
+                        <i class="fas fa-keyboard"></i>
+                        <h4>Step 1: Enter Properties</h4>
+                        <p>Input the addresses of the properties you need to show.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-box">
+                        <i class="fas fa-cogs"></i>
+                        <h4>Step 2: Set Preferences</h4>
+                        <p>Customize your schedule based on time constraints and client needs.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-box">
+                        <i class="fas fa-route"></i>
+                        <h4>Step 3: Get Optimized Schedule</h4>
+                        <p>Receive an optimized schedule with the best route.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2>What Our Users Say</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="testimonial">
+                        <p>"Showing Sort saved me hours of planning every week. It's a game-changer!"</p>
+                        <h5>- Jane Doe, Real Estate Agent</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial">
+                        <p>"The smart route planning feature is fantastic. I can focus on my clients, not the
+                            logistics."</p>
+                        <h5>- John Smith, Realtor</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial">
+                        <p>"My clients love how organized I am now. Showing Sort makes me look like a pro!"</p>
+                        <h5>- Sarah Lee, Broker</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Showing Sort | <a href="#">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

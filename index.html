@@ -15,12 +15,12 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #f8f9fa;
-            color: #343a40;
+            background-color: #f3f4f6;
+            color: #1f2937;
         }
 
         header {
-            background-color: #343a40;
+            background-color: #1e3a8a;
             padding: 20px;
             text-align: center;
             margin-bottom: 20px;
@@ -32,11 +32,11 @@
 
         h1,
         h2 {
-            color: #007bff;
+            color: #1e3a8a;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1000px;
         }
 
         .form-group label {
@@ -52,30 +52,62 @@
 
         #schedulerForm button {
             width: 100%;
+            background-color: #3b82f6;
+            border-color: #3b82f6;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        #schedulerForm button:hover {
+            background-color: #1e3a8a;
+            border-color: #1e3a8a;
         }
 
         #addDestination {
             display: block;
             width: 100%;
+            background-color: #fbbf24;
+            border-color: #fbbf24;
+            color: #1f2937;
+            transition: background-color 0.3s ease;
+        }
+
+        #addDestination:hover {
+            background-color: #d97706;
+            border-color: #d97706;
+        }
+
+        #scheduleResults {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-left: 20px;
         }
 
         #scheduleResults p {
-            background-color: #e9ecef;
+            background-color: #e5e7eb;
             padding: 10px;
             border-radius: 5px;
             margin-bottom: 10px;
+            color: #1f2937;
         }
 
         footer {
             text-align: center;
             margin-top: 20px;
             padding: 10px;
-            background-color: #343a40;
+            background-color: #1e3a8a;
             color: white;
         }
 
         footer a {
-            color: #007bff;
+            color: #fbbf24;
+        }
+
+        footer a:hover {
+            color: #fbbf24;
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -86,34 +118,43 @@
     </header>
 
     <div class="container">
-        <h1 class="text-center mb-4">Showing Sort</h1>
-        <form id="schedulerForm">
-            <!-- Start Time Input -->
-            <div class="form-group">
-                <label for="startTime"><i class="fas fa-clock"></i> Start Time (HH:MM):</label>
-                <input type="time" class="form-control" id="startTime" required>
+        <div class="row">
+            <!-- Form Column -->
+            <div class="col-md-6">
+                <h1 class="text-center mb-4">Showing Sort</h1>
+                <form id="schedulerForm">
+                    <!-- Start Time Input -->
+                    <div class="form-group">
+                        <label for="startTime"><i class="fas fa-clock"></i> Start Time (HH:MM):</label>
+                        <input type="time" class="form-control" id="startTime" required>
+                    </div>
+                    <!-- Appointment Duration Input -->
+                    <div class="form-group">
+                        <label for="appointmentDuration"><i class="fas fa-hourglass-half"></i> Appointment Duration
+                            (minutes):</label>
+                        <input type="number" class="form-control" id="appointmentDuration" required>
+                    </div>
+                    <!-- Starting Address Input -->
+                    <div class="form-group">
+                        <label for="startingAddress"><i class="fas fa-map-marker-alt"></i> Starting Address:</label>
+                        <input type="text" class="form-control" id="startingAddress" required>
+                    </div>
+                    <!-- Destinations Input -->
+                    <label><i class="fas fa-location-arrow"></i> Destinations:</label>
+                    <div id="destinationFields" class="mb-3"></div>
+                    <button type="button" id="addDestination" class="btn mb-3"><i class="fas fa-plus"></i>
+                        Add Another Destination</button>
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn"><i class="fas fa-calculator"></i> Calculate Schedule</button>
+                </form>
             </div>
-            <!-- Appointment Duration Input -->
-            <div class="form-group">
-                <label for="appointmentDuration"><i class="fas fa-hourglass-half"></i> Appointment Duration
-                    (minutes):</label>
-                <input type="number" class="form-control" id="appointmentDuration" required>
+
+            <!-- Results Column -->
+            <div class="col-md-6">
+                <h2 class="text-center mb-4">Schedule Results</h2>
+                <div id="scheduleResults"></div>
             </div>
-            <!-- Starting Address Input -->
-            <div class="form-group">
-                <label for="startingAddress"><i class="fas fa-map-marker-alt"></i> Starting Address:</label>
-                <input type="text" class="form-control" id="startingAddress" required>
-            </div>
-            <!-- Destinations Input -->
-            <label><i class="fas fa-location-arrow"></i> Destinations:</label>
-            <div id="destinationFields" class="mb-3"></div>
-            <button type="button" id="addDestination" class="btn btn-primary mb-3"><i class="fas fa-plus"></i> Add
-                Another Destination</button>
-            <!-- Submit Button -->
-            <button type="submit" class="btn btn-success"><i class="fas fa-calculator"></i> Calculate Schedule</button>
-        </form>
-        <!-- Schedule Results -->
-        <div id="scheduleResults" class="mt-4"></div>
+        </div>
     </div>
 
     <footer>
