@@ -11,46 +11,81 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <!-- Animate CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <style>
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #f8f9fa;
             color: #343a40;
+            scroll-behavior: smooth;
+        }
+
+        /* Modal styles */
+        .modal-content {
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+
+        .modal-header,
+        .modal-footer {
+            border: none;
         }
 
         .navbar {
             background-color: #007bff;
+            padding: 1rem 2rem;
         }
 
         .navbar-brand {
             color: white;
             font-weight: bold;
-            font-size: 1.5rem;
+            font-size: 1.75rem;
         }
 
         .hero-section {
-            background: url('https://source.unsplash.com/1600x900/?real-estate') no-repeat center center/cover;
-            height: 100vh;
+            background-color: #ffffff;
+            /* Use a clean white or brand-specific color */
+            min-height: 70vh;
+            padding: 60px 0;
             display: flex;
             align-items: center;
-            color: #007bff;
+            justify-content: center;
+            color: #343a40;
+            /* Use your brand's primary color */
             text-align: center;
+            background-image: repeating-linear-gradient(45deg, #f0f0f0, #f0f0f0 1px, transparent 1px, transparent 20px);
+
         }
 
         .hero-section h1 {
-            font-size: 3rem;
+            font-size: 4rem;
             font-weight: 700;
+            color: #007bff;
+            /* Or use a more subtle brand color */
         }
 
         .hero-section p {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #6c757d;
+            /* A softer tone for the subheadline */
         }
 
         .hero-section .btn-primary {
             padding: 15px 30px;
             font-size: 1.25rem;
             border-radius: 30px;
+            background-color: #007bff;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero-section .btn-primary:hover {
+            background-color: #0056b3;
+            /* Slightly darker shade on hover */
         }
 
         .features-section {
@@ -70,6 +105,12 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             background-color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         .feature-box i {
@@ -93,6 +134,12 @@
         .step-box {
             text-align: center;
             padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .step-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         .step-box i {
@@ -118,6 +165,12 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         .testimonial p {
@@ -137,12 +190,54 @@
         }
 
         .footer a {
-            color: #007bff;
+            color: #ffc107;
             text-decoration: none;
         }
 
         .footer a:hover {
             text-decoration: underline;
+        }
+
+        /* Animate on scroll */
+        .animated {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+        }
+
+        .fadeInUp {
+            animation-name: fadeInUp;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 40px, 0);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* Sticky CTA Button */
+        .sticky-cta {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: #343a40;
+            padding: 15px 25px;
+            font-size: 1.25rem;
+            border-radius: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        .sticky-cta:hover {
+            background-color: #007bff;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -151,7 +246,7 @@
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
+        <div class="container-fluid">
             <a class="navbar-brand" href="#">Showing Sort</a>
         </div>
     </nav>
@@ -159,42 +254,120 @@
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
-            <h1>Streamline Your Showings with Ease</h1>
-            <p>Let us handle the planning, so you can focus on closing deals.</p>
-            <a href="#" class="btn btn-primary">Get Started Today</a>
+            <h1 class="animate__animated animate__fadeInUp">Streamline Your Showings with Ease</h1>
+            <p class="animate__animated animate__fadeInUp animate__delay-1s">Let us handle the planning, so you can
+                focus on closing deals.</p>
+            <a href="#" class="btn btn-primary animate__animated animate__fadeInUp animate__delay-2s"
+                data-toggle="modal" data-target="#registerModal">Register Now</a>
+
         </div>
     </section>
+
+    <!-- Registration Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">User Registration</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="registrationForm">
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">User Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="loginUsername">Username:</label>
+                            <input type="text" class="form-control" id="loginUsername" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Password:</label>
+                            <input type="password" class="form-control" id="loginPassword" name="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Showing Sort</a>
+            <div class="ml-auto">
+                <button class="btn btn-outline-light" data-toggle="modal" data-target="#loginModal">Login</button>
+                <button class="btn btn-outline-light ml-2" data-toggle="modal"
+                    data-target="#registerModal">Register</button>
+            </div>
+        </div>
+    </nav>
+
 
     <!-- Features Section -->
     <section class="features-section">
         <div class="container">
-            <h2>Key Features</h2>
+            <h2 class="animate__animated animate__fadeInUp">Key Features</h2>
             <div class="row">
                 <div class="col-md-3">
-                    <div class="feature-box">
+                    <div class="feature-box animate__animated animate__fadeInUp">
                         <i class="fas fa-calendar-alt"></i>
                         <h4>Effortless Scheduling</h4>
                         <p>Automatically organize showings based on optimal routes.</p>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="feature-box">
+                    <div class="feature-box animate__animated animate__fadeInUp animate__delay-1s">
                         <i class="fas fa-map-marked-alt"></i>
                         <h4>Smart Route Planning</h4>
                         <p>Save time by finding the quickest routes between properties.</p>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="feature-box">
+                    <div class="feature-box animate__animated animate__fadeInUp animate__delay-2s">
                         <i class="fas fa-users"></i>
                         <h4>Client Collaboration</h4>
                         <p>Easily collaborate and share schedules with clients.</p>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="feature-box">
+                    <div class="feature-box animate__animated animate__fadeInUp animate__delay-3s">
                         <i class="fas fa-mobile-alt"></i>
-                        <h4>Mobile-Friendly</h4>
+                        <h4>Mobile-Friendly (Soon!)</h4>
                         <p>Manage your showings on the go with our responsive app.</p>
                     </div>
                 </div>
@@ -205,24 +378,24 @@
     <!-- How It Works Section -->
     <section class="how-it-works-section">
         <div class="container">
-            <h2>How It Works</h2>
+            <h2 class="animate__animated animate__fadeInUp">How It Works</h2>
             <div class="row">
                 <div class="col-md-4">
-                    <div class="step-box">
+                    <div class="step-box animate__animated animate__fadeInUp">
                         <i class="fas fa-keyboard"></i>
                         <h4>Step 1: Enter Properties</h4>
                         <p>Input the addresses of the properties you need to show.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="step-box">
+                    <div class="step-box animate__animated animate__fadeInUp animate__delay-1s">
                         <i class="fas fa-cogs"></i>
                         <h4>Step 2: Set Preferences</h4>
                         <p>Customize your schedule based on time constraints and client needs.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="step-box">
+                    <div class="step-box animate__animated animate__fadeInUp animate__delay-2s">
                         <i class="fas fa-route"></i>
                         <h4>Step 3: Get Optimized Schedule</h4>
                         <p>Receive an optimized schedule with the best route.</p>
@@ -235,23 +408,23 @@
     <!-- Testimonials Section -->
     <section class="testimonials-section">
         <div class="container">
-            <h2>What Our Users Say</h2>
+            <h2 class="animate__animated animate__fadeInUp">What Our Users Say</h2>
             <div class="row">
                 <div class="col-md-4">
-                    <div class="testimonial">
+                    <div class="testimonial animate__animated animate__fadeInUp">
                         <p>"Showing Sort saved me hours of planning every week. It's a game-changer!"</p>
                         <h5>- Jane Doe, Real Estate Agent</h5>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="testimonial">
+                    <div class="testimonial animate__animated animate__fadeInUp animate__delay-1s">
                         <p>"The smart route planning feature is fantastic. I can focus on my clients, not the
                             logistics."</p>
                         <h5>- John Smith, Realtor</h5>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="testimonial">
+                    <div class="testimonial animate__animated animate__fadeInUp animate__delay-2s">
                         <p>"My clients love how organized I am now. Showing Sort makes me look like a pro!"</p>
                         <h5>- Sarah Lee, Broker</h5>
                     </div>
@@ -267,10 +440,101 @@
         </div>
     </footer>
 
+    <!-- Sticky CTA Button -->
+    <a href="#" class="sticky-cta">Get Started</a>
+
     <!-- JavaScript for Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            fetch('http://localhost:3000/register', {  // Make sure this points to the correct server path
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            })
+                .then(response => response.text())
+                .then(data => {
+                    alert(data);
+                    if (data === 'User registered successfully') {
+                        window.location.href = 'index.html';
+                    }
+                })
+                .catch(error => console.error('Error during registration:', error));
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+
+            fetch('http://localhost:3000/login', {  // Ensure this points to the correct server path
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            })
+                .then(response => response.text())
+                .then(data => {
+                    if (data === 'Login successful') {
+                        window.location.href = 'index.html';
+                    } else {
+                        alert('Login failed: ' + data);
+                    }
+                })
+                .catch(error => console.error('Error during login:', error));
+        });
+    </script>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+
+            fetch('http://localhost:3000/login', {  // Ensure this points to the correct server path
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            })
+                .then(response => {
+                    console.log('Response status:', response.status);
+                    return response.text().then(data => ({ status: response.status, data }));  // Return both status and data
+                })
+                .then(({ status, data }) => {
+                    console.log('Response data:', data);
+                    if (status === 200 && data === 'Login successful') {
+                        window.location.href = 'index.html';
+                    } else {
+                        alert('Login failed: ' + data);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error during login:', error);
+                    alert('An error occurred during login. Please try again.');
+                });
+        });
+    </script>
+
+
+
+
+
+
+
 </body>
 
 </html>
